@@ -10,9 +10,11 @@ fmt.Println(x)
 [1 2 3]
 ```
 ---
-
 ---
 ```go
-
+fmt.Println("testing another one")
+```
+```output
+testing another one
 ```
 ---
