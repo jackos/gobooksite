@@ -4,6 +4,7 @@
 [Installing gobook](./installing.md)
 
 # Basics
+
 - [Variables](basics/variables.md)
 - [Arrays](basics/arrays.md)
 - [Slices](basics/slices.md)
