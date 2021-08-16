@@ -35,3 +35,8 @@ This will allow you to start playing with go in the fastest way possible
 ![generated](images/generated.png)
 
 
+
+Upload test.md to Github for a niceley rendered markdown document, with outputs retained
+
+![github](images/github.png)
+
