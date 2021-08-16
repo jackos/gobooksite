@@ -1,6 +1,8 @@
 
 # Call by value
 
+Like C, Go is pass by value
+
 ---
 ```go
 type person struct{
@@ -8,16 +10,12 @@ type person struct{
 	name string
 }
 
-func (p* person) changeValues(i int, s string, p person) {
+func changeValues(i int, s string, p person) {
 	i = i * 2
 	s = "Changed string"
 	p.age = 600
 	p.name = "Changed Name"
 }
-```
-```output
-/tmp/main.go:11:32: syntax error: unexpected int, expecting comma or )
-/tmp/main.go:17:1: syntax error: non-declaration statement outside function body
 ```
 ---
 Modifying the values passed in does not effect the values in the outer scope
@@ -30,6 +28,9 @@ s := "Original string"
 
 changeValues(i, s, p)
 fmt.Println(i, s, p)
+```
+```output
+2 Original string {20 Original Name}
 ```
 ---
 Modifying a map does effect the original, as it's a pointer
@@ -53,6 +54,9 @@ m := map[int]string{
 modMap(m)
 fmt.Println(m)
 ```
+```output
+map[0:Changed value 2:Added value]
+```
 ---
 Modifying a slice will only effect items that have already been initialized, can't add new items.
 
@@ -68,9 +72,11 @@ func modSlice(s []int) {
 ---
 ---
 ```go
-s := []int{1,2,3}
-modSlice(s)
-fmt.Println(s)
+sl := []int{1,2,3}
+modSlice(sl)
+fmt.Println(sl)
+```
+```output
+[2 4 6]
 ```
 ---
-Experimenting

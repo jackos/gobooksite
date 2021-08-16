@@ -16,3 +16,4 @@
 
 # Functional
 - [blocks](functional/blocks.md)
+- [Call by Value](functional/call_by_value.md)

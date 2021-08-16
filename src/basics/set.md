@@ -85,7 +85,6 @@ func (s *set) Contains(value string) bool {
 }
 ```
 ---
-
 ---
 ```go
 s := NewSet()
