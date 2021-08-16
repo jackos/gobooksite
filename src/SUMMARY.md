@@ -11,3 +11,8 @@
 - [For](basics/for.md)
 - [Maps](basics/maps.md)
 - [Sets](basics/set.md)
+- [Switch](basics/switch.md)
+- [Strings](basics/strings_runes.md)
+
+# Functional
+- [blocks](functional/blocks.md)

@@ -1,25 +1,23 @@
 
----
-```go
-import "fmt"
-```
----
+# Call by value
+
 ---
 ```go
 type person struct{
 	age int
 	name string
 }
-```
----
----
-```go
-func changeValues(i int, s string, p person){
+
+func (p* person) changeValues(i int, s string, p person) {
 	i = i * 2
 	s = "Changed string"
 	p.age = 600
 	p.name = "Changed Name"
 }
+```
+```output
+/tmp/main.go:11:32: syntax error: unexpected int, expecting comma or )
+/tmp/main.go:17:1: syntax error: non-declaration statement outside function body
 ```
 ---
 Modifying the values passed in does not effect the values in the outer scope

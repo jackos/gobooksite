@@ -1,12 +1,8 @@
 
----
-```go
-import (
-	"fmt"
-	"math/rand"
-)
-```
----
+# Switch
+
+### Standard Switch
+
 ---
 ```go
 words := []string{"a", "cow", "smile", "gopher",
@@ -24,8 +20,14 @@ for _, word := range words {
 	}
 }
 ```
+```output
+a is a short word!
+cow is a short word!
+smile is exactly the right length: 5
+anthropologist is a long word!
+```
 ---
-Break out of a switch inside a loop
+## Break out of a switch inside a loop
 
 ---
 ```go
@@ -51,13 +53,23 @@ loop:
 ```go
 looper()
 ```
+```output
+0 is even
+1 is boring
+2 is even
+3 is divisible by 3 but not 2
+4 is even
+5 is boring
+6 is even
+exit the loop!
+```
 ---
-Blank Switch
+## Blank Switch
 
 ---
 ```go
-words := []string{"hi", "salutations", "hello"}
-for _, word := range words {
+newWords := []string{"hi", "salutations", "hello"}
+for _, word := range newWords {
 	switch wordLen := len(word); {
 		case wordLen < 5:
 			fmt.Println(word, "is a short word!")
@@ -67,6 +79,11 @@ for _, word := range words {
 			fmt.Println(word, "is exactly the right length.")
 	}
 }
+```
+```output
+hi is a short word!
+salutations is a long word!
+hello is exactly the right length.
 ```
 ---
 ---
@@ -84,4 +101,3 @@ switch n := rand.Intn(10); {
 Cool one
 ```
 ---
-
