@@ -36,7 +36,7 @@ This will allow you to start playing with go in the fastest way possible
 
 
 
-Upload test.md to Github for a niceley rendered markdown document, with outputs retained
+6) Upload test.md to Github for a niceley rendered markdown document, with outputs retained
 
 ![github](images/github.png)
 

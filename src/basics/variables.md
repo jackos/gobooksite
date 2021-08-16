@@ -80,7 +80,7 @@ fmt.Println(o, p, q)
 
 ---
 ```go
-// Like C this swaps out the variables with the literals before compile time
+// Like C this swaps out the consts with literals during compile time
 const (
 	idKey   string = "id"
 	nameKey        = "name"

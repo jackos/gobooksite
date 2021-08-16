@@ -1,18 +1,9 @@
 
+# Sets
 
+## Using a map as a set
 
-
-
-
-
-# Using a map as a set
-
----
-```go
-import "fmt"
-```
----
-Inserting same value into map doesn't result in duplicates
+### Map keys don't duplicate
 
 ---
 ```go
@@ -23,31 +14,68 @@ for _, v := range vals {
 }
 fmt.Println(intSet)
 ```
+```output
+map[1:true 2:true 3:true]
+```
 ---
-
-
-
-
-
-Trying to retrieve a key that doesn't exist gives false
+### Trying to retrieve a key that doesn't exist gives false
 
 ---
 ```go
 fmt.Println(intSet[5])
 ```
+```output
+false
+```
 ---
-Use a struct as a set
+## Use a struct as a set
 
 ---
 ```go
-intSet := map[int]struct{}{}
-vals := []int{5, 10, 2, 5, 8, 7, 3, 9, 1, 2, 10}
-for _, v := range vals {
-	intSet[v] = struct{}{}
+structSet := map[int]struct{}{}
+var exists = struct{}{}
+ints := []int{1, 1, 2, 2, 3}
+for _, v := range ints {
+	structSet[v] = exists
 }
-fmt.Println(intSet)
+
+for i, v := range structSet {
+	fmt.Println(i, v)
+}
+
+if _, ok := structSet[4]; ok {
+	fmt.Println("number is in the set")
+} else {
+	fmt.Println("not in the set")
+}
 ```
 ```output
-map[1:{} 2:{} 3:{} 5:{} 7:{} 8:{} 9:{} 10:{}]
+1 {}
+2 {}
+3 {}
+not in the set
+```
+---
+
+## Make a set type
+
+---
+```go
+type set struct {
+	m map[string]struct{}
+}
+```
+---
+
+---
+```go
+func NewSet() *set {
+	s := &set{}
+	s.m = make(map[string]struct)
+}
+```
+```output
+/tmp/main.go:27:6: syntax error: unexpected NewSet, expecting (
+/tmp/main.go:29:2: syntax error: non-declaration statement outside function body
 ```
 ---

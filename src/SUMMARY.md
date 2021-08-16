@@ -10,3 +10,4 @@
 - [Slices](basics/slices.md)
 - [For](basics/for.md)
 - [Maps](basics/maps.md)
+- [Sets](basics/set.md)
