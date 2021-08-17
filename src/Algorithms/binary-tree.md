@@ -1,11 +1,6 @@
 
 ---
 ```go
-import "fmt"
-```
----
----
-```go
 type IntTree struct {
 	val         int
 	left, right *IntTree
