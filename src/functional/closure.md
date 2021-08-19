@@ -1,4 +1,6 @@
 
+# Closures
+
 ## Define the Person struct
 
 ---
@@ -10,7 +12,9 @@ type Person struct {
 }
 ```
 ---
-## Initialize a slice of 3 people
+- initialize a slice of 3 people
+- Sort by age, then last name
+- People is captured by the anonymous function closure, 
 
 ---
 ```go
@@ -27,30 +31,15 @@ sort.Slice(people, func(i int, j int) bool {
 sort.Slice(people, func(i int, j int) bool {
 		return people[i].LastName < people[j].LastName
 })
-```
-```output
-/tmp/main.go:4:1: syntax error: non-declaration statement outside function body
-/tmp/main.go:9:24: missing function body
-/tmp/main.go:9:39: method has multiple receivers
-/tmp/main.go:9:44: syntax error: unexpected {, expecting (
-/tmp/main.go:10:3: syntax error: unexpected return, expecting )
-/tmp/main.go:13:1: syntax error: non-declaration statement outside function body
-/tmp/main.go:13:24: missing function body
-/tmp/main.go:13:39: method has multiple receivers
-/tmp/main.go:14:3: syntax error: unexpected return, expecting )
-```
----
-Sort by age, then last name
-People is captured by the anonymous function closure, 
-
----
-```go
 fmt.Println(people)
 ```
 ```output
-/tmp/main.go:18:13: undefined: people
+[{Bob Bobbart 18} {Amy Bobbart 19} {Pat Patterson 16}]
 ```
 ---
+
+## Defining a closure type
+
 ---
 ```go
 // Returns a function that multiplies by the given factor
@@ -75,6 +64,18 @@ for i := 0; i < 10; i++ {
 	fmt.Println(twoBase(i), threeBase(i), fourBase(i))
 }
 ```
+```output
+0 0 0
+2 3 4
+4 6 8
+6 9 12
+8 12 16
+10 15 20
+12 18 24
+14 21 28
+16 24 32
+18 27 36
+```
 ---
 Remind caller to do something with a closure e.g. close a file, as it's returned to caller and Go doesn't allow unused values, they know that they should do something with it
 
@@ -93,10 +94,24 @@ func getFile(name string) (*os.File, func(), error) {
 ---
 ---
 ```go
-f, closer, err := getFile("./out.txt")
+_, closer, err := getFile("./out.txt")
 if err != nil {
 	log.Fatal(err)
 }
 defer closer()
+```
+```output
+2 3 4
+4 6 8
+6 9 12
+8 12 16
+10 15 20
+12 18 24
+14 21 28
+16 24 32
+18 27 36
+gobook-output-start
+2021/08/18 10:27:47 open ./out.txt: no such file or directory
+exit status 1
 ```
 ---
