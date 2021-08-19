@@ -14,7 +14,7 @@
 	- [Strings](basics/strings_runes.md)
 
 - [Functional](functional/intro.md)
-	- [Basics](functional/functions.md)
+	- [Basics](functional/basics.md)
 	- [Blocks](functional/blocks.md)
 	- [Call by Value](functional/call_by_value.md)
 	- [Closure](functional/closure.md)
