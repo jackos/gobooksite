@@ -1,7 +1,7 @@
 
 # Switch
 
-### Standard Switch
+## Standard Switch
 
 ---
 ```go

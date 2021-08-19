@@ -1,4 +1,6 @@
 
+# Arrays
+
 ### Initialize array to 0 values
 
 ---
@@ -54,5 +56,4 @@ fmt.Println(e)
 [[0 0 0 0] [0 0 0 0]]
 ```
 ---
-
 _Go has a simple multidimensional array implementation which incurs performance penalities_

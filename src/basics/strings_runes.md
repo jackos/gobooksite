@@ -1,4 +1,6 @@
 
+# Strings
+
 Converting string to runes retains emoji's as a single item
 
 ---
@@ -28,7 +30,6 @@ Bytes: Hello, 🌞
 Runes: Hello, 🌞
 ```
 ---
-
 ### String slice
 
 ---
@@ -42,7 +43,6 @@ for _, v := range(h[6:9]) {
 the
 ```
 ---
-
 Converting an int to a sting with give the UTF-8 representation
 
 ---

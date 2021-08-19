@@ -12,8 +12,7 @@ Make a subdirectory for the extra package you want:
     └── mypackage.go
 ```
 ---
-3) In mypackage (make sure to capitalize anything you want to export):
----
+In mypackage (make sure to capitalize anything you want to export):
 ---
 ```go
 package mypackage
@@ -23,7 +22,7 @@ func Double(a int) int {
 }
 ```
 ---
-4) Now in main.go you can import the package:
+Now in main.go you can import the package:
 
 ---
 ```go
@@ -43,8 +42,7 @@ func main() {
 }
 ```
 ---
-5) run:
----
+run:
 ---
 ```fish
 go mod init

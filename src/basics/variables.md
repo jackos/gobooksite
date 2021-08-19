@@ -1,4 +1,6 @@
 
+# Variables
+
 ### Declare and initialize
 
 ---

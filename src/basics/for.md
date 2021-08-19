@@ -1,4 +1,8 @@
 
+# Looping 
+
+Go has a single loop statement: for
+
 ### Standard for statement
 
 ---

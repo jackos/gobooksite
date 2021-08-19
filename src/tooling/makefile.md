@@ -1,3 +1,5 @@
+
+```makefile
 .DEFAULT_GOAL := build
 fmt:
 	go fmt main.go
@@ -12,3 +14,4 @@ vet: fmt
 build: vet
 	go build main.go
 .PHONY:build
+```

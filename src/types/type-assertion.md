@@ -1,101 +1,126 @@
 
+# Type Assertion
+
+---
+```go
 ---
 ```go
 import (
-	"errors"
-	"fmt"
 	"log"
+	"fmt"
 )
 ```
 ---
+type conversion: change
+type assertion: reveal
 
-Example of using an interface and type assertion to run a different method depending on the type
+Conversion example
 
 ---
 ```go
-type treeNode struct {
-	val    Val
-	lchild *treeNode
-	rchild *treeNode
+type MyInt int
+```
+---
+---
+```go
+func main() {
+	var i MyInt = 20
+	i2 := int(i)
+	fmt.Println(i2)
 }
-type Val interface {
-	process(int, int) int
-}
+```
+```output
+20
+```
+---
+Assertion example (happens at runtime), always check type assertions!
 
-type number int
-type operator byte
-
-func (n number) process(int, int) int {
-	fmt.Println("Hey! Can't process this!")
-	return int(n)
-}
-
-func (o operator) process(left int, right int) int {
-	switch o {
-	case '+':
-		fmt.Printf("%v%v%v = %v\n", left, string(o), right, left+right)
-		return left + right
-	case '-':
-		fmt.Printf("%v%v%v = %v\n", left, string(o), right, left-right)
-		return left - right
-	case '*':
-		fmt.Printf("%v%v%v = %v\n", left, o, right, left*right)
-		return left * right
-	case '/':
-		fmt.Printf("%v%v%v = %v\n", left, o, right, left/right)
-		return left / right
-	default:
-		return -1
+---
+```go
+func main() {
+	var i interface{}
+	var mine MyInt = 20
+	i = mine
+	i2, ok := i.(MyInt)
+	if !ok {
+		log.Fatalf("unexpected type for %v", i)
 	}
+	fmt.Println(i2)
 }
+```
+```output
+20
+```
+---
+Type switch to check type and do appropriate action
+i is shadowing here, one of few examples where shadowing is idiomatic
 
-func walkTree(t *treeNode) (int, error) {
-	switch val := t.val.(type) {
+---
+```go
+func doThings(i interface{}) {
+	switch i := i.(type) {
 	case nil:
-		return 0, errors.New("invalid expression")
-	case number:
-		// we know that t.val is of type number, so return the
-		// int value
-		return int(val), nil
-	case operator:
-		// we know that t.val is of type operator, so
-		// find the values of the left and right children, then
-		// call the process() method on operator to return the
-		// result of processing their values.
-		left, err := walkTree(t.lchild)
-		if err != nil {
-			return 0, err
-		}
-		right, err := walkTree(t.rchild)
-		if err != nil {
-			return 0, err
-		}
-		return val.process(left, right), nil
+		fmt.Println(i, "is of type interface{}")
+	case int:
+		fmt.Println(i, "is of type int")
+	case MyInt:
+		fmt.Println(i, "is of type MyInt")
+	case string:
+		fmt.Println(i, "is of type string")
+
 	default:
-		// if a new treeVal type is defined, but walkTree wasn't updated
-		// to process it, this detects it
-		return 0, errors.New("unknown node type")
+		fmt.Println("I don't know what type this value is:", j)
 	}
 }
 
 func main() {
-	t := treeNode{
-		val: number(10),
-	}
-	t2 := treeNode{
-		val: number(9),
-	}
-	t3 := treeNode{
-		val:    operator('-'),
-		lchild: &t,
-		rchild: &t2,
-	}
-
-	x, err := walkTree(&t3)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(x)
+	var j MyInt = 10
+	doThings(j)
 }
+```
+---
+
+Example in the standard library using type assertion from the standard librar
+
+---
+```go
+// copyBuffer is the actual implementation of Copy and CopyBuffer.
+// if buf is nil, one is allocated.
+func copyBuffer(dst Writer, src Reader, buf []byte) (written int64, err error) {
+	// If the reader has a WriteTo method, use it to do the copy.
+	// Avoids an allocation and a copy.
+	if wt, ok := src.(WriterTo); ok {
+		return wt.WriteTo(dst)
+	}
+	// Similarly, if the writer has a ReadFrom method, use it to do the copy.
+	if rt, ok := dst.(ReaderFrom); ok {
+		return rt.ReadFrom(src)
+	}
+	// function continues...
+}
+```
+---
+
+Example of using fallback code when implementing a newer version of an API
+This comes from database/sql/driver in the standard library
+
+---
+```go
+func ctxDriverStmtExec(ctx context.Context, si driver.Stmt,
+	nvdargs []driver.NamedValue) (driver.Result, error) {
+if siCtx, is := si.(driver.StmtExecContext); is {
+	return siCtx.ExecContext(ctx, nvdargs)
+}
+// fallback code is here
+}
+```
+---
+
+---
+```go
+
+```
+---
+
 ```
 ---

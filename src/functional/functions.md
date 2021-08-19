@@ -1,14 +1,6 @@
 
----
-```go
-import (
-	"fmt"
-	"errors"
-	"os"
-	"strconv"
-)
-```
----
+# Basics
+
 ## Simulate optional parameters
 ---
 ```go
@@ -30,6 +22,7 @@ func printNameAge(opts MyFuncOpts) error {
 		} else { 
 			fmt.Println("No age provided")
 	}
+	return nil
 }
 ```
 ---
@@ -48,6 +41,7 @@ test()
 ```
 ```output
 Clayton
+No age provided
 ```
 ---
 ## Variadic input parameters and slices
@@ -62,11 +56,8 @@ func addTo(base int, values ...int) []int {
 	return out
 }
 ```
-```output
-No age provided
-```
 ---
-### Standard call
+## Standard call
 
 ---
 ```go
@@ -77,13 +68,13 @@ fmt.Println(sum)
 [152 43 42]
 ```
 ---
-### Spread an array into the parameters
+## Spread an array into the parameters
 
 ---
 ```go
-x := []int{20,30,40}
-sum := addTo(10, x...)
-fmt.Println(sum)
+a := []int{20,30,40}
+sumSpread := addTo(10, a...)
+fmt.Println(sumSpread)
 ```
 ```output
 [30 40 50]
@@ -113,7 +104,12 @@ if err != nil {
 fmt.Println(x, y, err)
 ```
 ```output
+No age provided
+[152 43 42]
+[30 40 50]
+gobook-output-start
 Oh no an error: Cannot divide by zero
+exit status 1
 ```
 ---
 Blank return (Go community says this is bad idea as it's unclear!)
@@ -127,6 +123,10 @@ func divAndRemainder(numerator, denominator int) (result int, remainder int, err
 	result, remainder = numerator/denominator, numerator%denominator
 	return
 }
+```
+```output
+/tmp/main.go:45:6: divAndRemainder redeclared in this block
+	previous declaration at /tmp/main.go:37:86
 ```
 ---
 ---
@@ -155,6 +155,7 @@ Printing 0 from the value returned
 Printing 1 from inside of an anonymous function
 Printing 1 from the value returned
 Printing 2 from inside of an anonymous function
+Printing 2 from the value returned
 ```
 ---
 ## First Class Functions
@@ -178,6 +179,9 @@ var opMap = map[string]opFuncType{
 	"*": mul,
 	"/": div,
 }
+```
+```output
+/tmp/main.go:74:6: opMap declared but not used
 ```
 ---
 ---
