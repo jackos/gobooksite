@@ -9,4 +9,4 @@ To modify the notes, clone the repo and do:
 ```
 mdbook serve
 ```
-To create a live website as you modify the notes
+This will watch for changes and update your broswer in a live dev environment
