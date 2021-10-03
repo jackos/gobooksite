@@ -4,3 +4,12 @@ language = "en"
 multilingual = true
 src = "src"
 title = "gobook"
+
+[output.html]
+default-theme = "palenight"
+preferred-dark-theme = "palenight"
+additional-js = ["theme-palenight.js"]
+
+[output.html.playground]
+editable = true
+line-numbers = true
