@@ -1,49 +1,73 @@
-pre code.hljs {
-    display: block;
-    overflow-x: auto;
-    padding: 1em;
+.hljs-comment,
+.hljs-quote {
+  color: var(--comment);
 }
-code.hljs {
-    padding: 3px 5px;
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-name,
+.hljs-regexp,
+.hljs-link,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: var(--red);
 }
+
+.hljs-meta,
+.hljs-section,
+.hljs-params,
+.hljs-type {
+  color: var(--yellow);
+}
+
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-number {
+  color: var(--orange);
+}
+
+.hljs-title,
+.hljs-built_in {
+  color: var(--blue);
+}
+
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet {
+  color: var(--green);
+}
+
+/* Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: var(--magenta);
+}
+
 .hljs {
-    background: #474949;
-    color: #d1d9e1;
+  display: block;
+  overflow-x: auto;
+  background: var(--bg-editor);
+  color: var(black);
+  padding: 0.5em;
 }
-.hljs-comment, .hljs-quote {
-    color: #969896;
-    font-style: italic;
-}
-.hljs-addition, .hljs-keyword, .hljs-literal, .hljs-selector-tag, .hljs-type {
-    color: #c9c;
-}
-.hljs-number, .hljs-selector-attr, .hljs-selector-pseudo {
-    color: #f99157;
-}
-.hljs-doctag, .hljs-regexp, .hljs-string {
-    color: #8abeb7;
-}
-.hljs-built_in, .hljs-name, .hljs-section, .hljs-title {
-    color: #7068bd;
-}
-.hljs-class .hljs-title, .hljs-selector-id, .hljs-template-variable, .hljs-title.class_, .hljs-variable {
-    color: #fc6;
-}
-.hljs-name, .hljs-section, .hljs-strong {
-    font-weight: 700;
-}
-.hljs-bullet, .hljs-link, .hljs-meta, .hljs-subst, .hljs-symbol {
-    color: #f99157;
-}
-.hljs-deletion {
-    color: #dc322f;
-}
-.hljs-formula {
-    background: #eee8d5;
-}
-.hljs-attr, .hljs-attribute {
-    color: #81a2be;
-}
+
 .hljs-emphasis {
-    font-style: italic;
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-addition {
+  color: var(--green-bright);
+  background-color: var(--bg-hover);
+}
+
+.hljs-deletion {
+  color: var(--red-bright);
+  background-color: var(--bg-hover);
 }
