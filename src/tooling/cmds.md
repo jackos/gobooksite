@@ -8,6 +8,10 @@ go env
 ## See where the overwrite file is for GO
 go env GOENV
 
+## Test Coverage
+```bash
+go test -v -coverpkg=./... -coverprofile=profile.cov ./... && go tool cover -func profile.cov
+```
 
 ## Imports sorter
 ```fish
@@ -26,7 +30,7 @@ golint ./...
 ```
 
 ## Go vet
-Passing wrong numbers of paramteres, assigning values that are never used etc
+Passing wrong numbers of parameters, assigning values that are never used etc
 ```fish
 go vet ./...
 ```
@@ -35,6 +39,16 @@ go vet ./...
 Many different tools run over the same directory
 ```fish
 golangci-lint run
+```
+
+## go generate
+Run a command from comments e.g. in a file:
+```go
+//go:generate mockgen -destination=mocks/mock_foo.go -package=mocks . Foo
+```
+the run
+```bash
+go generate
 ```
 
 ## shadow detection
